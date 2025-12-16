@@ -18,7 +18,7 @@
             <div style="overflow-x:auto;">
                 <table>
                     <tr>
-                        <th>Ngày giờ</th>
+                        <th>Ngày và giờ</th>
                         <th>Khách hàng</th>
                         <th>SĐT</th>
                         <th>Trạng thái</th>
