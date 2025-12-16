@@ -38,7 +38,7 @@
         <!-- Nội dung giới thiệu -->
         <div style="flex:1; min-width:300px;" class="animate-fade delay-2">
             <h3 style="color:var(--gold); font-size:2rem; margin-bottom:20px; font-family:'Playfair Display', serif;">
-                Không Gian Quý Ông
+                Không Gian Đẳng Cấp Quý Ông
             </h3>
             
             <p style="color:#bbb; line-height:1.8; margin-bottom:20px; font-size:1.05rem; text-align: justify;">
