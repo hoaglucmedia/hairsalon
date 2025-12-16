@@ -6,10 +6,10 @@ if (session_status() === PHP_SESSION_NONE) {
 // Nếu đang chạy trên InfinityFree
 if (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'epizy.com') !== false) {
     // --- INFINITYFREE ---
-   $servername = "sql305.infinityfree.com"; // Hostname lấy từ ảnh
-$username_db = "if0_40487423";           // Username lấy từ ảnh
-$password_db = "XLHYE6gs94La";           // Password bạn gửi
-$dbname = "if0_40487423_shop";           // Tên Database trên host
+$servername  = "localhost";               // QUAN TRỌNG
+$username_db = "if0_40487423";
+$password_db = "XLHYE6gs94La";
+$dbname      = "if0_40487423_shop";          // Tên Database trên host
 } else {
     // --- LOCALHOST (XAMPP) ---
     $servername  = "localhost";
