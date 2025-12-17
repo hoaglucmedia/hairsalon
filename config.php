@@ -1,54 +1,62 @@
 <?php
+// 1. Khởi động Session (nếu chưa có)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Danh sách các địa chỉ được coi là Localhost
-$whitelist = array(
-    '127.0.0.1',
-    '::1',
-    'localhost'
-);
+// 2. Danh sách các địa chỉ được coi là Localhost (Máy cá nhân)
+$whitelist_local = array('127.0.0.1', '::1', 'localhost');
 
-// Kiểm tra: Nếu tên miền hiện tại nằm trong whitelist thì là Local, ngược lại là Online
-if (in_array($_SERVER['HTTP_HOST'], $whitelist)) {
-    
-    // --- CẤU HÌNH LOCALHOST (XAMPP) ---
+// --- LOGIC TỰ ĐỘNG CHỌN MÔI TRƯỜNG ---
+
+// TRƯỜNG HỢP 1: DOCKER (Ưu tiên cao nhất)
+// Kiểm tra xem có biến môi trường từ docker-compose truyền vào không
+if (getenv('DB_HOST')) {
+    // Lấy thông tin từ file docker-compose.yml
+    $servername  = getenv('DB_HOST');     // Thường là 'db'
+    $username_db = getenv('DB_USER');     // Thường là 'root'
+    $password_db = getenv('DB_PASSWORD'); // Pass set trong docker
+    $dbname      = getenv('DB_NAME');     // Tên DB set trong docker
+} 
+
+// TRƯỜNG HỢP 2: LOCALHOST (XAMPP/WAMP trên Windows)
+// Nếu tên miền là localhost mà KHÔNG CÓ biến môi trường Docker
+elseif (in_array($_SERVER['HTTP_HOST'], $whitelist_local)) {
     $servername  = "localhost";
     $username_db = "root";
-    $password_db = "";
-    $dbname      = "hairsalon";
+    $password_db = "";            // XAMPP thường không có pass
+    $dbname      = "hairsalon";   // Tên database dưới máy bạn
+} 
 
-} else {
-    
-    // --- CẤU HÌNH INFINITYFREE (ONLINE) ---
-    // Lưu ý: Hostname PHẢI LÀ sql305... (Lấy từ ảnh bạn gửi)
-    // Tuyệt đối không để "localhost" ở đây
-    $servername  = "sql305.infinityfree.com"; 
-    $username_db = "if0_40487423";
-    $password_db = "XLHYE6gs94La";
-    $dbname      = "if0_40487423_shop";
+// TRƯỜNG HỢP 3: INFINITYFREE (Hosting Online)
+// Nếu không phải 2 trường hợp trên thì chắc chắn là đang chạy trên Host
+else {
+    $servername  = "sql305.infinityfree.com"; // Hostname chuẩn từ ảnh bạn gửi
+    $username_db = "if0_40487423";            // Username chuẩn
+    $password_db = "XLHYE6gs94La";            // Password chuẩn
+    $dbname      = "if0_40487423_shop";       // DB Name chuẩn
 }
 
+// 3. Thực hiện kết nối (Dùng PDO)
 try {
     $conn = new PDO(
         "mysql:host=$servername;dbname=$dbname;charset=utf8",
         $username_db,
         $password_db
     );
-    // Báo lỗi dạng Exception để dễ bắt lỗi
+    
+    // Cấu hình báo lỗi
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Mặc định trả về mảng kết hợp (key là tên cột)
     $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // Đoạn này giúp bạn debug nhanh:
-    // Nếu chạy Local thì hiện lỗi chi tiết
-    if (in_array($_SERVER['HTTP_HOST'], $whitelist)) {
-        die("Lỗi kết nối Local: " . $e->getMessage());
+    // Xử lý lỗi kết nối
+    // Nếu đang ở Docker hoặc Local thì hiện lỗi chi tiết để sửa
+    if (getenv('DB_HOST') || in_array($_SERVER['HTTP_HOST'], $whitelist_local)) {
+        die("Lỗi kết nối (Dev Mode): " . $e->getMessage());
     } else {
-        // Nếu chạy Online thì báo lỗi chung chung để bảo mật
-        die("Lỗi kết nối Server. Vui lòng kiểm tra lại cấu hình Database.");
+        // Nếu ở InfinityFree thì báo lỗi chung chung để bảo mật
+        die("Hệ thống đang bảo trì, vui lòng quay lại sau.");
     }
 }
 ?>
