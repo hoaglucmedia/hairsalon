@@ -4,7 +4,7 @@
         <h1 class="animate-fade delay-1" style="text-shadow: 2px 2px 10px #000;">AL BARBERSHOP</h1>
         <p class="animate-fade delay-2" style="font-style:italic; margin-top:10px; font-size: 1.3rem; letter-spacing: 2px;">
             "Khẳng định bản lĩnh - Định hình phong cách" 
-            abcd
+            
 
         </p>
         
