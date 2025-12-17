@@ -15,7 +15,7 @@ services:
       # SỬA QUAN TRỌNG: Tên biến phải khớp với lệnh getenv() trong file PHP
       - DB_HOST=db
       - DB_USER=root
-      - DB_PASSWORD=root   # File cũ bạn để là DB_PASS, trong khi PHP gọi là DB_PASSWORD
+      - DB_PASSWORD=root 
       - DB_NAME=hairsalon
 
   db:
