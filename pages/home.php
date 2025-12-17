@@ -3,7 +3,7 @@
     <div style="background: rgba(0,0,0,0.5); padding: 40px; border-radius: 15px; backdrop-filter: blur(2px); border: 1px solid rgba(255,255,255,0.1);">
         <h1 class="animate-fade delay-1" style="text-shadow: 2px 2px 10px #000;">AL BARBERSHOP</h1>
 
-         <h1 class="animate-fade delay-1" style="text-shadow: 2px 2px 10px #000;">Nguyen Hoang Luc Thu 4 Ca 2 </h1>
+         <h1 class="animate-fade delay-1" style="text-shadow: 2px 2px 10px #000;">Nguyễn Hoàng Lực Thu 4 Ca 2 </h1>
         <p class="animate-fade delay-2" style="font-style:italic; margin-top:10px; font-size: 1.3rem; letter-spacing: 2px;">
             "Khẳng định bản lĩnh - Định hình phong cách" 
         
