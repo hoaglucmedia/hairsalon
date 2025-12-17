@@ -1,13 +1,10 @@
-FROM php:8.2-apache
+FROM php:5.6-apache-stretch
 
-# Cài extension MySQL cho PHP
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN apt-get update && apt-get install -y \
+    libmysqlclient-dev \
+    && docker-php-ext-install mysql \
+    && docker-php-ext-enable mysql
 
-# Copy toàn bộ source code vào Apache
 COPY . /var/www/html/
 
-# Phân quyền
-RUN chown -R www-data:www-data /var/www/html
-
-# Mở cổng 80
 EXPOSE 80

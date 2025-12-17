@@ -5,8 +5,12 @@ require_once 'logic.php';
 
 // 2. Nhúng phần đầu trang (Menu, CSS)
 require_once 'includes/header.php';
+
+// 3. Logic Điều hướng (Router)
+// Lấy tên trang từ URL (ví dụ: index.php?page=services)
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
+// [SỬA LỖI] Khai báo biến highlight_id để tránh lỗi "Undefined variable" ở trang Products
 $highlight_id = isset($_GET['highlight']) ? $_GET['highlight'] : null;
 
 // Danh sách các trang hợp lệ được phép truy cập
@@ -25,10 +29,10 @@ if (in_array($page, $allowed_pages)) {
               </div>";
     }
 } else {
-    // Nếu trang không hợp lệ, mặc định quay về trang chủ
+    
     include "pages/home.php";
 }
 
-// 4. Nhúng phần chân trang (Footer, Modal Giỏ hàng, Script)
+
 require_once 'includes/footer.php';
 ?>

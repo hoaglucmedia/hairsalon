@@ -11,7 +11,7 @@
         <span class="toggle-link" onclick="toggleForms()">Chưa có tài khoản? Đăng ký ngay</span>
     </div>
 
-
+    <!-- 2. FORM ĐĂNG KÝ (SĐT - KHÔNG CẦN EMAIL) -->
     <div id="registerForm" class="form-section hidden">
         <h2 style="color:var(--gold); margin-bottom:20px">ĐĂNG KÝ NHANH</h2>
         <form method="POST" action="index.php">

@@ -3,34 +3,17 @@ version: "3.8"
 services:
   web:
     build: .
-    container_name: hairsalon_web
+    container_name: php56_web
     ports:
       - "8080:80"
     depends_on:
       - db
-    # Map code từ máy thật vào docker để sửa code xong F5 là thấy ngay
-    volumes:
-      - .:/var/www/html
-    environment:
-      # SỬA QUAN TRỌNG: Tên biến phải khớp với lệnh getenv() trong file PHP
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=root 
-      - DB_NAME=hairsalon
 
   db:
-    image: mysql:8.0
-    container_name: hairsalon_db
-    # QUAN TRỌNG: Fix lỗi "Authentication plugin" khi PHP kết nối với MySQL 8
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:5.7
+    container_name: mysql5_db
+    ports:
+      - "3309:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: hairsalon
-    volumes:
-      - db_data:/var/lib/mysql
-      # Tự động nạp file hairsalon.sql vào database khi chạy lần đầu
-      # Đảm bảo file hairsalon.sql nằm cùng thư mục với file docker-compose này
-      - ./hairsalon.sql:/docker-entrypoint-initdb.d/hairsalon.sql
 
-volumes:
-  db_data:
