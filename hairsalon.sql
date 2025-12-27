@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th12 27, 2025 lúc 08:51 AM
+-- Thời gian đã tạo: Th12 27, 2025 lúc 08:58 AM
 -- Phiên bản máy phục vụ: 9.1.0
 -- Phiên bản PHP: 8.3.14
 
@@ -39,13 +39,14 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `reject_reason` varchar(255) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bookings`
 --
 
 INSERT INTO `bookings` (`id`, `customer_name`, `book_date`, `book_time`, `stylist`, `status`, `created_at`, `reject_reason`, `phone`) VALUES
+(17, 'Khách Demo', '2025-12-27', '18:55:00', 'Tuấn Anh', 'pending', '2025-12-27 08:53:26', NULL, '0986046133'),
 (15, 'Khách Demo', '2025-12-14', '11:00:00', 'Tuấn Anh', 'rejected', '2025-12-13 02:02:20', 'khach k den', '0986046133'),
 (16, 'Khách Demo', '2025-12-14', '11:00:00', 'Tuấn Anh', 'confirmed', '2025-12-13 02:03:27', NULL, '0986046133');
 
