@@ -39,19 +39,20 @@
                     <input type="text" name="phone" placeholder="Nhập SĐT liên hệ (VD: 0912...)" required class="booking-input" pattern="[0-9]{10,11}" title="Vui lòng nhập đúng số điện thoại 10-11 số" style="margin-bottom:0;">
                 </div>
 
-                <!-- Chọn Stylist -->
+                <!-- Chọn Stylist (Đã bỏ Ngẫu nhiên) -->
                 <div style="margin-bottom: 30px;">
                     <label style="color:#bbb; font-size:0.9rem; margin-bottom:5px; display:block;">Chọn Stylist:</label>
-                    <select name="stylist" class="booking-input" style="margin-bottom:0; cursor:pointer;">
-                        <option value="Ngẫu nhiên">-- Chọn Stylist (Ngẫu nhiên) --</option>
+                    <select name="stylist" class="booking-input" required style="margin-bottom:0; cursor:pointer; background-color: #333; color: white;">
+                        <!-- Placeholder yêu cầu chọn -->
+                        <option value="" disabled selected>-- Vui lòng chọn thợ --</option>
+                        
                         <?php 
                         // Lấy danh sách thợ từ DB bằng PDO
                         $stmt = $conn->prepare("SELECT * FROM stylists");
                         $stmt->execute();
                         while($r = $stmt->fetch()): 
                         ?>
-                            <!-- Thêm color:black để chữ hiển thị rõ trên nền trắng mặc định của trình duyệt -->
-                            <option value="<?php echo $r['name']; ?>" style="color:black;">
+                            <option value="<?php echo $r['name']; ?>" style="color: black; background-color: white;">
                                 Stylist: <?php echo $r['name']; ?> (<?php echo $r['experience']; ?>)
                             </option>
                         <?php endwhile; ?>

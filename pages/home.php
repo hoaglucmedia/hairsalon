@@ -6,25 +6,13 @@
             "Khẳng định bản lĩnh - Định hình phong cách"
         </p>
         
-        <div class="animate-fade delay-3" style="margin-top:30px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
-            <!-- Nút đặt lịch -->
-            <a href="index.php?page=services" class="btn-cta" style="text-decoration:none; display:inline-block;">
+        <div class="animate-fade delay-3" style="margin-top:30px;">
+            <a href="index.php?page=services" class="btn-cta" style="margin-right:15px; text-decoration:none; display:inline-block;">
                 <i class="far fa-calendar-check"></i> ĐẶT LỊCH NGAY
             </a>
-
-            <!-- Nút mua sản phẩm -->
-            <a href="index.php?page=products" class="btn-cta" 
-               style="background:transparent; border:2px solid var(--gold); color:var(--gold); text-decoration:none; display:inline-block;">
+            <a href="index.php?page=products" class="btn-cta" style="background:transparent; border:2px solid var(--gold); color:var(--gold); text-decoration:none; display:inline-block;">
                 <i class="fas fa-shopping-bag"></i> MUA SẢN PHẨM
             </a>
-
-            <!-- ⭐ Nút mới thêm -->
-         <a href="index_1.php" 
-   class="btn-cta" 
-   style="background:var(--gold); color:#000; font-weight:600; text-decoration:none; display:inline-block;">
-    <i class="fas fa-folder-open"></i> LAB THỰC HÀNH LTW
-</a>
-
         </div>
     </div>
 </div>
@@ -34,12 +22,13 @@
     <div class="section-title animate-fade"><h2>Về Chúng Tôi</h2></div>
     
     <div style="display:flex; gap:50px; flex-wrap:wrap; align-items:center; justify-content:center;">
-        
-        <!-- Hình ảnh -->
+        <!-- Hình ảnh (Có hiệu ứng khung viền vàng) -->
         <div style="flex:1; min-width:300px; max-width:500px;" class="animate-fade delay-1">
             <div style="position:relative; padding: 10px;">
+                <!-- Khung viền trang trí -->
                 <div style="position:absolute; top:0; left:0; width:100%; height:100%; border:2px solid var(--gold); border-radius:15px; z-index:0; transform: translate(-10px, -10px);"></div>
                 
+                <!-- Ảnh chính -->
                 <img src="https://dongtaybarbershop.com/wp-content/uploads/2023/10/z4704846904271_2afdd06bae0425ab9c128bd0e593091f.jpg" 
                      style="width:100%; border-radius:15px; filter:sepia(20%) brightness(0.9); box-shadow:0 10px 30px rgba(0,0,0,0.5); position:relative; z-index:1;" 
                      alt="AL BarberShop Space">
@@ -76,7 +65,6 @@
                     Xem bảng giá chi tiết <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-
         </div>
     </div>
 </div>

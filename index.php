@@ -29,7 +29,7 @@ if (in_array($page, $allowed_pages)) {
               </div>";
     }
 } else {
-    
+    // Nếu trang không hợp lệ, mặc định quay về trang chủ
     include "pages/home.php";
 }
 
